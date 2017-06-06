@@ -14,4 +14,5 @@ class Api::V1::UsersController < ApplicationController
 			render json: {error: 'Username already taken or Password required'}
 		end
 	end
+	
 end
