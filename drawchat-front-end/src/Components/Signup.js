@@ -10,18 +10,12 @@ class Signup extends React.Component{
 		}
 	}
 
-	handleUsernameChange(e){
-		const username = e.target.value
+	handleChange(prop, value){
 		this.setState({
-				username
+				[prop]: value
 		})
 	}
-	handlePasswordChange(e){
-		const password = e.target.value
-		this.setState({
-			password
-		})
-	}
+	
 	handleSubmit(e){
 		e.preventDefault()
 		this.props.onSubmit(this.state)
@@ -34,9 +28,9 @@ class Signup extends React.Component{
 			<div>
 				<form onSubmit={this.handleSubmit.bind(this)}>
 				<label>New Username</label>
-				<input onChange={this.handleUsernameChange.bind(this)} name='username' type="text" placeholder="New Username"/>
+				<input onChange={e => this.handleChange('username', e.target.value)} value={this.state.username} type="text" placeholder="New Username"/>
 				<label>Password</label>
-				<input onChange={this.handlePasswordChange.bind(this)} name='password' type="password" />
+				<input onChange={e => this.handleChange('password', e.target.value)} value={this.state.password} type="password" />
 				<button>Sign-Up!</button>
 				</form>
 			</div>

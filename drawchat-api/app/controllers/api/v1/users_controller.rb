@@ -14,5 +14,10 @@ class Api::V1::UsersController < ApplicationController
 			render json: {error: 'Username already taken or Password required'}
 		end
 	end
+
+	def show
+		user = User.find_by(username: params[:username])
+		render json: user
+	end
 	
 end
