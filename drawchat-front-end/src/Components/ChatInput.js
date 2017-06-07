@@ -18,12 +18,15 @@ class ChatInput extends React.Component{
 	handleSubmit(ev){
 		ev.preventDefault();
 		this.props.onSend(this.state.messageInput)
+		this.setState({
+			messageInput: ""
+		})
 	}
 
 	render(){
 		return(
 			<form onSubmit={this.handleSubmit.bind(this)}>
-				<input type='text' onChange={this.handleChange.bind(this)}placeholder="Enter message here..."/>
+				<input type='text' value={this.state.messageInput} onChange={this.handleChange.bind(this)}placeholder="Enter message here..."/>
 			</form>
 		)
 	}

@@ -8,3 +8,7 @@ export function createUser(user){
 export function signIn(user){
 	return axios.post("http://localhost:3000/api/v1/auth", user)	
 }		
+
+export function getAllUsers(){
+	return axios.get("http://localhost:3000/api/v1/users")
+}

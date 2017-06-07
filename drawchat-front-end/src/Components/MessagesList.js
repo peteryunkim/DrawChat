@@ -5,7 +5,7 @@ function MessagesList(props){
 	const messageList = props.messages.map(mes => <Message content={mes}/>)
 		
 	return(
-		<div>
+		<div id='message-list'>
 			{messageList}
 		</div>
 	)

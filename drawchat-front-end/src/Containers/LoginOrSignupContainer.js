@@ -13,8 +13,9 @@ function LoginOrSignupContainer(props){
 				if (res.data.error){
 					dupe(res.data.error)
 				} else {
-					localStorage.setItem('jwt', res.data.token);
-					props.setUser(res.data.user.username)
+					localStorage.setItem('jwt', res.data.token)
+					localStorage.setItem('username', res.data.user.username)
+
 				}
 			})
 	}
@@ -23,8 +24,9 @@ function LoginOrSignupContainer(props){
 		signIn(prop)
 		.then( res => (
 			localStorage.setItem('jwt', res.data.token),
-			props.setUser(res.data.user.username))
-		)
+			localStorage.setItem('username', res.data.user.username)
+	
+		))
 	}
 
 	const dupe = function handleDuplicateUsername(error){

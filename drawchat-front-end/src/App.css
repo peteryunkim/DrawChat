@@ -13,3 +13,18 @@
 .App-intro {
   font-size: large;
 }
+/*
+#chat-input{
+	position: absolute; 
+	bottom: 0;
+}
+#chats{
+	margin: 91px;
+}
+#chat-container{
+	border: 1px solid #999; right:0; position: absolute; bottom: 0; margin: 0 150px; 
+}
+
+#message-list{ 
+	padding: 1px; 
+}*/

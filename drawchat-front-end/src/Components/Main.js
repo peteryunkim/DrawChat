@@ -4,7 +4,7 @@ import ChatContainer from '../Containers/ChatContainer'
 import isLoggedIn from './HOC/isLoggedIn'
 import { Route } from 'react-router-dom'
 
-const LoggedIn = isLoggedIn(ChatContainer)
+const LoggedInChatContainer = isLoggedIn(ChatContainer)
 
 class Main extends React.Component{
 
@@ -13,8 +13,8 @@ class Main extends React.Component{
 
 		return(
 			<div>
-				<Route exact path='/login' render={() => <LoginOrSignupContainer setUser={this.props.setUser}/>}/> 
-				<Route path='/drawchat' component={LoggedIn}/>
+				<Route exact path='/login' render={() => <LoginOrSignupContainer />}/> 
+				<Route path='/drawchat' component={LoggedInChatContainer}/>
 			</div>
 		)
 	}
