@@ -15,6 +15,7 @@ function LoginOrSignupContainer(props){
 				} else {
 					localStorage.setItem('jwt', res.data.token)
 					localStorage.setItem('username', res.data.user.username)
+					localStorage.setItem('id', parseInt(res.data.user.id))
 
 				}
 			})
@@ -24,7 +25,8 @@ function LoginOrSignupContainer(props){
 		signIn(prop)
 		.then( res => (
 			localStorage.setItem('jwt', res.data.token),
-			localStorage.setItem('username', res.data.user.username)
+			localStorage.setItem('username', res.data.user.username),
+			localStorage.setItem('id', parseInt(res.data.user.id))
 	
 		))
 	}

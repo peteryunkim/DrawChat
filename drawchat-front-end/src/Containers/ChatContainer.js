@@ -1,43 +1,39 @@
 import React from 'react'
-import MessagesList from '../Components/MessagesList'
-import ChatInput from '../Components/ChatInput'
+import ChatBox from '../Components/ChatBox'
+
 import DrawChatUserList from '../Components/DrawChatUserList'
-import { getAllUsers } from '../Api/index'
 
 
 class ChatContainer extends React.Component{
 	constructor(){
 		super()
 		this.state={
-			messages: ['testing message', 'test mess'],
 			sending_user: "",
-			all_users: []
+			chatroomUsers: []
 		}
 	}
 
 	//get messages with correct users and replace state.messages
-	componentDidMount(){
-		getAllUsers()
-		.then(res => this.setState({
+	componentWillMount(){
+		this.setState(prevState => ({
 			sending_user: localStorage.getItem('username'),
-			all_users: res.data
+			chatroomUsers: [...prevState.chatroomUsers, { username : localStorage.getItem('username'), id: localStorage.getItem('id')}]
 		}))
-		
 	}
-	messageHandler(message){
-		this.setState({
-			messages: [...this.state.messages, message]
-		})
+
+	addToChatroomUsers(user){
+		this.setState(prevState => ({
+			chatroomUsers: [...prevState.chatroomUsers, user]
+		}))
 	}
 
 	render(){
-		console.log(this.state)
+		console.log('from chat container', this.state)
 		return(
 			<div id='chat-container'>
-				<DrawChatUserList allUsers={this.state.all_users}/>
+				<DrawChatUserList onClick={this.addToChatroomUsers.bind(this)}/>
 				<div id='chats'>
-				<MessagesList sender={this.state.sending_user} messages={this.state.messages}/>
-				<ChatInput onSend={this.messageHandler.bind(this)}/>
+				<ChatBox allUsers={this.state.chatroomUsers} sender={this.state.sending_user} />
 				</div>
 			</div>
 		)

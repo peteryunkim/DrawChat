@@ -12,7 +12,8 @@ class Api::V1::UsersController < ApplicationController
 			token = JWT.encode({user_id: user.id}, "$3cr37", 'HS256')
 			render json: {
         user: {
-          username: user.username
+          username: user.username,
+          id: user.id
         },
         token: token
       }

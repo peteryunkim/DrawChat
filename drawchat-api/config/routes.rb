@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   	namespace :v1 do
   		post '/auth', to: 'auth#create'
   		resources :users
-  		resources :chatrooms
+  		post '/chatroom', to: 'chatrooms#show'
   		resources :messages
   	end
   end
