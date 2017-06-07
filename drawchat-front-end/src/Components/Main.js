@@ -8,24 +8,12 @@ const LoggedIn = isLoggedIn(ChatContainer)
 
 class Main extends React.Component{
 
-	constructor(){
-		super()
-		this.state={
-			currentUser: ""
-		}
-	}
-
-	setCurrentUser(currentUser){
-		this.setState({
-			currentUser
-		})
-	}
 
 	render(){
-		console.log('currently logged in: ', this.state.currentUser)
+
 		return(
 			<div>
-				<Route exact path='/login' render={() => <LoginOrSignupContainer setUser={this.setCurrentUser.bind(this)}/>}/> 
+				<Route exact path='/login' render={() => <LoginOrSignupContainer setUser={this.props.setUser}/>}/> 
 				<Route path='/drawchat' component={LoggedIn}/>
 			</div>
 		)

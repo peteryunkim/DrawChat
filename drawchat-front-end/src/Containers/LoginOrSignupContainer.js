@@ -10,12 +10,13 @@ function LoginOrSignupContainer(props){
 	function handleNewUser(newUserInfo){
 		createUser(newUserInfo)
 			.then(function(res){
-			if (res.data.error){
-				dupe(res.data.error)
-			} else {
-				return res.data
-			}
-		})
+				if (res.data.error){
+					dupe(res.data.error)
+				} else {
+					localStorage.setItem('jwt', res.data.token);
+					props.setUser(res.data.user.username)
+				}
+			})
 	}
 
 	function handleSignIn(prop){

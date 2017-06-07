@@ -9,7 +9,13 @@ class Api::V1::UsersController < ApplicationController
 		user = User.new(username: params[:username], password: params[:password])
 		if user.valid?
 			user.save
-			render json: user
+			token = JWT.encode({user_id: user.id}, "$3cr37", 'HS256')
+			render json: {
+        user: {
+          username: user.username
+        },
+        token: token
+      }
 		else
 			render json: {error: 'Username already taken or Password required'}
 		end
