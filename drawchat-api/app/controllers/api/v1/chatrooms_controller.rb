@@ -1,13 +1,20 @@
 class Api::V1::ChatroomsController < ApplicationController
 
 	def show
-		array_Ids = []
-		name_array = []
-		params[:_json].each do |name|
-			array_Ids.push(name[:id].to_i)
-			name_array.push(name[:username])
-		end 
-		byebug
+		# array_Ids = []
+		# name_array = []
+		# params[:_json].each do |name|
+		# 	array_Ids.push(name[:id].to_i)
+		# 	name_array.push(name[:username])
+		# end 
+		# byebug
+
+
+		# Chatroom.joins(:chatroom_users).where('chatroom_users.user_id IN (?)', array_Ids)
+#Chatroom.joins(:chatroom_users).where('chatroom_users.user_id IN (?)', [2,5,3]).distinct(:user_id)
+
+
+
 
 		#use id's to find chatroom
 		#chatroom_messages = ChatroomUser.find_by(user_id: array_Ids).chatroom.messages
@@ -27,8 +34,9 @@ class Api::V1::ChatroomsController < ApplicationController
 
 	end
 
-	def create
-
+	def index
+		chat = Chatroom.all
+		render json: chat
 
 	end
 

@@ -11,23 +11,25 @@ class ChatBox extends React.Component{
 		}
 	}
 
-	componentDidMount(){
+	componentDidMount(props){
 		getChatroom(this.props)
-		.then( console.log )
+		.then( res => console.log )
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log('more', nextProps.allUsers)
 		getChatroom(nextProps.allUsers)
 	}
 
 	messageHandler(message){
+		console.log(this.props)
+		// sendMessage(message)
 		this.setState({
 			messages: [...this.state.messages, message]
 		})
 	}
 	
 	render(){
+		console.log(this.props)
 	const messageList = this.state.messages.map((mes, i) => <Message key={i} content={mes}/>)
 		return(
 			<div id='message-list'>

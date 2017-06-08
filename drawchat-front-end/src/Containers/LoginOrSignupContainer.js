@@ -3,7 +3,6 @@ import Login from '../Components/Login'
 import Signup from '../Components/Signup'
 import { createUser, signIn } from '../Api/index'
 
-
 function LoginOrSignupContainer(props){
 
 
@@ -16,7 +15,7 @@ function LoginOrSignupContainer(props){
 					localStorage.setItem('jwt', res.data.token)
 					localStorage.setItem('username', res.data.user.username)
 					localStorage.setItem('id', parseInt(res.data.user.id))
-
+					props.history.push('/drawchat')
 				}
 			})
 	}
@@ -26,8 +25,8 @@ function LoginOrSignupContainer(props){
 		.then( res => (
 			localStorage.setItem('jwt', res.data.token),
 			localStorage.setItem('username', res.data.user.username),
-			localStorage.setItem('id', parseInt(res.data.user.id))
-	
+			localStorage.setItem('id', parseInt(res.data.user.id)),
+			props.history.push('/drawchat')
 		))
 	}
 

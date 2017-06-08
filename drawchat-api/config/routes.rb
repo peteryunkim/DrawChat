@@ -3,9 +3,19 @@ Rails.application.routes.draw do
   namespace :api do
   	namespace :v1 do
   		post '/auth', to: 'auth#create'
+
   		resources :users
+
   		post '/chatroom', to: 'chatrooms#show'
-  		resources :messages
+  		get '/chatrooms', to: 'chatrooms#index'
+
+  		post '/message', to: 'messages#create'
+
+  		get '/canvas', to: 'canvases#show'
+  		post '/canvas', to: 'canvases#create'
+  		patch '/canvas', to: 'canvases#update'
+  		delete '/canvas', to: 'canvases#delete'
+
   	end
   end
 end
