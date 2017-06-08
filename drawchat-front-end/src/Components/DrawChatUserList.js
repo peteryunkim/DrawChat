@@ -18,17 +18,16 @@ class DrawChatUserList extends React.Component{
 		}))
 	}
 
-
-
-	
 	render(){
-
-	const allUsers = this.state.all_users.map( user => <DrawChatUser key ={user.username} onClick={this.props.onClick} user={user}/>)
+		
+	const allUsers = this.state.all_users.filter( user => user.username !== localStorage.getItem('username') )
+	const filteredUsers= allUsers.map(user => <DrawChatUser key ={user.username} onClick={this.props.onClick} user={user}/>)
 		return(
-		<div id='all-users'>{allUsers}</div>
+		<div id='all-users'>{filteredUsers}</div>
 		)
 	}
 	
 }
 
 export default DrawChatUserList
+// 

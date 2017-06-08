@@ -12,7 +12,6 @@ class ChatBox extends React.Component{
 	}
 
 	componentDidMount(){
-		console.log('chatbox', this.props)
 		getChatroom(this.props)
 		.then( console.log )
 	}

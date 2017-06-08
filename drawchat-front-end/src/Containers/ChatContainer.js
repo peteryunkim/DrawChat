@@ -22,13 +22,17 @@ class ChatContainer extends React.Component{
 	}
 
 	addToChatroomUsers(user){
-		this.setState(prevState => ({
+		if (this.state.chatroomUsers.includes(user)){
+			return null
+		} else {
+			this.setState(prevState => ({
 			chatroomUsers: [...prevState.chatroomUsers, user]
 		}))
+		}
+		
 	}
 
 	render(){
-		console.log('from chat container', this.state)
 		return(
 			<div id='chat-container'>
 				<DrawChatUserList onClick={this.addToChatroomUsers.bind(this)}/>
