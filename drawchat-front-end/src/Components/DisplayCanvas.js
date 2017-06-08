@@ -16,6 +16,8 @@ class DisplayCanvas extends React.Component{
 			canvasUrl: dataUrl
 		})
 	}	
+
+	//on changes, send canvasUrl up to drawcontainer
 	
 
 

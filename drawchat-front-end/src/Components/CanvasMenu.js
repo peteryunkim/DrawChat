@@ -1,17 +1,17 @@
 import React from 'react'
 import NewCanvas from './NewCanvas'
+import CanvasList from './CanvasList'
 
-class CanvasMenu extends React.Component{
-	
-	render(){
+function CanvasMenu (props){
+
+
 		return(
 			<div>
-				<NewCanvas onDisplay={this.props.onDisplay}/>
-			
-				<h2>canvas history</h2>
+				<NewCanvas newDrawing={props.newDrawing}/>
+				<CanvasList allCanvases={props.allCanvases}/>
 			</div>
 		)
-	}
+
 }
 
 export default CanvasMenu

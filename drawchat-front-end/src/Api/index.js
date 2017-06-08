@@ -16,3 +16,7 @@ export function getAllUsers(){
 export function getChatroom(users){
 	return axios.post("http://localhost:3000/api/v1/chatroom", users)
 }
+
+export function getDrawings(){
+	return axios.get("http://localhost:3000/api/v1/canvas")
+}

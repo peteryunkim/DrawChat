@@ -17,7 +17,7 @@ class NewCanvas extends React.Component{
 
 	handleSubmit(e){
 		e.preventDefault();
-		this.props.onDisplay(this.state.name)
+		this.props.newDrawing(this.state.name)
 		this.setState({
 			name: ""
 		})
