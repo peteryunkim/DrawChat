@@ -1,6 +1,7 @@
 import React from 'react'
 
-class NewCanvas extends React.Component{
+class NewCanvasForm
+ extends React.Component{
 	constructor(){
 		super()
 		this.state={
@@ -36,4 +37,5 @@ class NewCanvas extends React.Component{
 	}
 }
 
-export default NewCanvas
+export default NewCanvasForm
+

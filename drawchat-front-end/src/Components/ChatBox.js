@@ -21,7 +21,6 @@ class ChatBox extends React.Component{
 	}
 
 	messageHandler(message){
-		console.log(this.props)
 		// sendMessage(message)
 		this.setState({
 			messages: [...this.state.messages, message]

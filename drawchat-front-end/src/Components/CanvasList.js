@@ -1,15 +1,15 @@
 import React from 'react'
+import CanvasNames from './CanvasNames'
 
 
-class CanvasList extends React.Component{
-	
-	render(){
+function CanvasList (props){
+	console.log(props)
+	const allCanvases = props.allCanvases.map( canvas => <CanvasNames name={canvas.name}/>)
 		return(
 			<div>
-			LIST
+			{allCanvases}
 			</div>
 		)
-	}
 }
 
 export default CanvasList

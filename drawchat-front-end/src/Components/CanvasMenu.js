@@ -1,5 +1,5 @@
 import React from 'react'
-import NewCanvas from './NewCanvas'
+import NewCanvasForm from './NewCanvasForm'
 import CanvasList from './CanvasList'
 
 function CanvasMenu (props){
@@ -7,7 +7,7 @@ function CanvasMenu (props){
 
 		return(
 			<div>
-				<NewCanvas newDrawing={props.newDrawing}/>
+				<NewCanvasForm newDrawing={props.newDrawing}/>
 				<CanvasList allCanvases={props.allCanvases}/>
 			</div>
 		)

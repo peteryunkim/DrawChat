@@ -6,7 +6,9 @@ class Api::V1::CanvasesController < ApplicationController
 	end
 
 	def create
-
+		canvas = Canvas.new(canvasUrl: params[:canvasUrl], name: params[:canvasName])
+		canvas.save
+		render json: canvas
 	end
 
 	def update

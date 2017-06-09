@@ -1,7 +1,7 @@
 import React from 'react'
 import CanvasMenu from '../Components/CanvasMenu'
 import DisplayCanvas from '../Components/DisplayCanvas'
-import { getDrawings } from '../Api/index'
+import { getDrawings, saveDrawingDB } from '../Api/index'
 
 
 class DrawContainer extends React.Component {
@@ -17,31 +17,44 @@ class DrawContainer extends React.Component {
 
 	componentDidMount(){
 		getDrawings()
-		.then(res => console.log)
-		// populate this.state.existingCanvases with names
+		.then(res => this.setState({
+			existingCanvases: res.data
+			})
+		)
 	}
 
-	newDrawing(canvasName){
-		console.log(canvasName)
+
+	newDrawing(canvas){
+		this.currentDrawing(canvas)
+	}
+
+	currentDrawing = (canvas) => {
+		console.log(canvas)
 		this.setState({
 			drawMode: true,
-			canvasName
+			canvasName: canvas
 		})
 	}
 
-	onDrawing(){
-		
+	saveDrawing = (canvasUrl) => {
+		this.setState({
+			canvasUrl: canvasUrl
+		})
+		saveDrawingDB(canvasUrl,this.state.canvasName)
+		.then(res => this.setState(prevState => ({
+			existingCanvases: [...prevState.existingCanvases, res.data]
+		})))	
 	}
 
 	render(){
+		console.log(this.state)
 		return(
 			<div>
 			<div className='col-md-2'>
 				<CanvasMenu allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
 			<div className='col-md-6' id='container'>
-				<h1>Diplay Canvas</h1>
-				{this.state.drawMode? <DisplayCanvas /> : null}
+				{this.state.drawMode? <DisplayCanvas onSave={this.saveDrawing}name={this.state.canvasName}/> : null}
 			</div>	
 			</div>
 		)
