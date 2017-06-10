@@ -1,9 +1,11 @@
 import React from 'react'
 
 function CanvasNames(props){
-	console.log(props)
 	return(
-		<div id='canvas-names'>{props.name}</div>
+		<div>
+		<a href="#" id='canvas-names' onClick={() => props.selectCanvas(props)}>{props.name}</a>
+		<button onClick={() => props.onDelete(props)} >delete</button>
+		</div>
 	)
 }
 

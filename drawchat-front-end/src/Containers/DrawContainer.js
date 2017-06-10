@@ -1,7 +1,7 @@
 import React from 'react'
 import CanvasMenu from '../Components/CanvasMenu'
 import DisplayCanvas from '../Components/DisplayCanvas'
-import { getDrawings, saveDrawingDB } from '../Api/index'
+import { getDrawings, saveDrawingDB, selectExistingDrawing, deleteCanvas } from '../Api/index'
 
 
 class DrawContainer extends React.Component {
@@ -29,7 +29,6 @@ class DrawContainer extends React.Component {
 	}
 
 	currentDrawing = (canvas) => {
-		console.log(canvas)
 		this.setState({
 			drawMode: true,
 			canvasName: canvas
@@ -46,12 +45,27 @@ class DrawContainer extends React.Component {
 		})))	
 	}
 
+	selectExistingCanvas = (name) => {
+		selectExistingDrawing(name)
+		.then(res => this.setState({
+			canvasName: res.data.name,
+			canvasUrl: res.data.canvasUrl
+		}))
+	}
+
+	handleDelete =(name)=>{
+		deleteCanvas(name)
+		.then( res => this.setState({
+			existingCanvases: this.state.existingCanvases.filter( list => list.name !== res.data.name)
+		}))
+	}
+
 	render(){
 		console.log(this.state)
 		return(
 			<div>
 			<div className='col-md-2'>
-				<CanvasMenu allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
+				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
 			<div className='col-md-6' id='container'>
 				{this.state.drawMode? <DisplayCanvas onSave={this.saveDrawing}name={this.state.canvasName}/> : null}

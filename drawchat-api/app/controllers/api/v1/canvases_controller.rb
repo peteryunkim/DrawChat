@@ -1,6 +1,6 @@
 class Api::V1::CanvasesController < ApplicationController
 
-	def show
+	def index
 		canvases = Canvas.all
 		render json: canvases
 	end
@@ -16,7 +16,14 @@ class Api::V1::CanvasesController < ApplicationController
 	end
 
 	def delete
+		canvas = Canvas.find_by(name: params[:canvas][:name])
+		canvas.destroy
+		render json: canvas
+	end
 
+	def show
+		canvas = Canvas.find_by(name: params[:canvas][:name])
+		render json: canvas
 	end
 
 

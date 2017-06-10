@@ -8,7 +8,7 @@ function CanvasMenu (props){
 		return(
 			<div>
 				<NewCanvasForm newDrawing={props.newDrawing}/>
-				<CanvasList allCanvases={props.allCanvases}/>
+				<CanvasList onDelete={props.onDelete} selectCanvas={props.selectCanvas} allCanvases={props.allCanvases}/>
 			</div>
 		)
 

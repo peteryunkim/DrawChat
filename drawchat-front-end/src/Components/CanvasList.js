@@ -3,8 +3,7 @@ import CanvasNames from './CanvasNames'
 
 
 function CanvasList (props){
-	console.log(props)
-	const allCanvases = props.allCanvases.map( canvas => <CanvasNames name={canvas.name}/>)
+	const allCanvases = props.allCanvases.map( canvas => <CanvasNames onDelete={props.onDelete} selectCanvas={props.selectCanvas} name={canvas.name}/>)
 		return(
 			<div>
 			{allCanvases}

@@ -24,3 +24,11 @@ export function saveDrawingDB(canvasUrl,canvasName){
 	return axios.post("http://localhost:3000/api/v1/canvas", {canvasUrl,canvasName})
 	// console.log('saving', {object, canvasName})
 }
+
+export function selectExistingDrawing(canvas){
+	return axios.post("http://localhost:3000/api/v1/one_canvas", {canvas: canvas})
+}
+
+export function deleteCanvas(canvas){
+	return axios({method: 'delete', url:"http://localhost:3000/api/v1/canvas" , data: {canvas}} ) 
+}

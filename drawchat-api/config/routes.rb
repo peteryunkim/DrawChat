@@ -11,10 +11,11 @@ Rails.application.routes.draw do
 
   		post '/message', to: 'messages#create'
 
-  		get '/canvas', to: 'canvases#show'
+  		get '/canvas', to: 'canvases#index'
   		post '/canvas', to: 'canvases#create'
   		patch '/canvas', to: 'canvases#update'
   		delete '/canvas', to: 'canvases#delete'
+  		post '/one_canvas', to: 'canvases#show'
 
   	end
   end
