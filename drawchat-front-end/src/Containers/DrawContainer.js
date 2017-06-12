@@ -41,13 +41,12 @@ class DrawContainer extends React.Component {
 
 	saveDrawing = (canvasUrl) => {
 		this.setState({
-			canvasUrl: canvasUrl,
-			saved: true
+			canvasUrl: canvasUrl
 		})
+		console.log('saving')
 		saveDrawingDB(canvasUrl,this.state.canvasName)
 		.then(res => this.setState(prevState => ({
 			existingCanvases: [...prevState.existingCanvases, res.data],
-			saved: true
 		})))	
 	}
 
@@ -88,8 +87,8 @@ class DrawContainer extends React.Component {
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
 			<div className='col-md-10' id='container'>
-				{this.state.newCanvas? <DisplayCanvas onSave={this.saveDrawing} saved={this.state.saved}newCanvas={this.state.newCanvas} name={this.state.canvasName}/> : null}
-				{this.state.selectCanvas? <DisplayCanvas onSave={this.saveDrawing} saved={this.state.saved}canvasUrl={this.state.canvasUrl} name={this.state.canvasName}/> : null}
+				{this.state.newCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}newCanvas={this.state.newCanvas} name={this.state.canvasName}/> : null}
+				{this.state.selectCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}canvasUrl={this.state.canvasUrl} name={this.state.canvasName}/> : null}
 			</div>	
 			</div>
 		)

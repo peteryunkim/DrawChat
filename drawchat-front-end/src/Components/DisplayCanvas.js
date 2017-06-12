@@ -1,6 +1,6 @@
 import React from 'react'
 import ToolPencil from '../CanvasTools/ToolPencil'
-import { editCanvas } from '../Api/index'
+
 
 
 class DisplayCanvas extends React.Component{
@@ -16,15 +16,27 @@ class DisplayCanvas extends React.Component{
 	}
 
 	componentDidMount(){
+		this.props.cableApp.canvas = this.props.cableApp.cable.subscriptions.create('CanvasChannel', 
+		{
+			received: canvasData => this.setState({
+				canvasUrl: canvasData.canvasUrl
+			}, () => 
+			{this.changeCanvas()
+			this.drawingOnCanvas()
+			})
+			// received: canvasData => console.log(canvasData)
+		}
+		)
+
 		if (this.props.newCanvas === true){
 			let canvas= this.refs.canvas
 			let dataUrl= canvas.toDataURL()
 			this.setState({
 				canvasUrl: "",
 				canvasName: this.props.name,
-				saved: this.props.saved
+				saved: this.state.saved
 			})
-			this.changingCanvas()
+			this.drawingOnCanvas()
 		} else if (this.props.canvasUrl.length !== 0){
 			let canvas= this.refs.canvas
 			let ctx=canvas.getContext("2d")
@@ -38,35 +50,26 @@ class DisplayCanvas extends React.Component{
   			ctx.drawImage(img,0,0);
   		}
   		img.src = this.props.canvasUrl
-			this.changingCanvas()
+			this.drawingOnCanvas()
 		}
+		this.changeCanvas()
+		this.drawingOnCanvas()
 		
 	}	
-
-
-	componentWillReceiveProps(nextProps){
-		if(nextProps.name !== this.state.name){
-  		this.changeCanvas(nextProps)
-		}
-		this.changingCanvas()
-	}
 	
-	changeCanvas = (nextProps) => {
+	
+	changeCanvas = () => {
 			let canvas= this.refs.canvas
 			let ctx=canvas.getContext("2d")
 			let img = new Image;
-			this.setState({
-				canvasUrl: nextProps.canvasUrl,
-				canvasName: nextProps.name,
-				saved: nextProps.saved
-			})
+
 			img.onload = function(){
   			ctx.drawImage(img,0,0);
   		}
-  		img.src = this.props.canvasUrl
+  		img.src = this.state.canvasUrl
 	}
 
-	changingCanvas = () => {
+	drawingOnCanvas = () => {
 		let canvas= this.refs.canvas
 		let ctx=canvas.getContext("2d")
 
@@ -90,15 +93,18 @@ class DisplayCanvas extends React.Component{
 		}
 
 	}
+
+	saveButton(){
+		this.setState({
+			saved: true
+		})
+		this.props.onSave(this.state.canvasUrl)
+	}
 	
 	handleChange = (url) => {
 		if(this.state.saved){
-			editCanvas(url, this.props.name)
-		.then( res => 
-			this.setState({
-				canvasUrl: res.data.canvasUrl
-			})
-		)}
+			this.props.cableApp.canvas.send({canvasUrl: url, canvasName: this.props.name})
+		}
 	}
 
 
@@ -108,7 +114,7 @@ class DisplayCanvas extends React.Component{
 			<div id='container'>
 			<h1 id='canvas-name'>{this.state.canvasName}
 				<p>
-					<button className="btn btn-default btn-sm" onClick={() => this.props.onSave(this.state.canvasUrl)}>
+					<button className="btn btn-default btn-sm" onClick={() => this.saveButton()}>
 					<span className="glyphicon glyphicon-save" aria-hidden="true"></span>Save</button>
 				</p>
 			</h1>

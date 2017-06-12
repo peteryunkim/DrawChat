@@ -9,7 +9,7 @@ import { withRouter } from 'react-router'
 const withRouterLogIn = withRouter(LoginOrSignupContainer)
 const LoggedInMain = isLoggedIn(Main)
 
-function App () {
+function App (props) {
 
     return (
       <div className="App">
@@ -19,7 +19,7 @@ function App () {
         <Router>
           <div>
             <Route exact path='/login' component={withRouterLogIn}/> 
-            <Route path='/drawchat' component={LoggedInMain}/>
+            <Route path='/drawchat' render={() => <LoggedInMain cableApp={props.cableApp}/> }/>
           </div>
         </Router>
       </div>

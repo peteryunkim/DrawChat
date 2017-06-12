@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   		get '/canvas', to: 'canvases#index'
   		post '/canvas', to: 'canvases#create'
-  		patch '/canvas', to: 'canvases#update'
   		delete '/canvas', to: 'canvases#delete'
   		post '/one_canvas', to: 'canvases#show'
 

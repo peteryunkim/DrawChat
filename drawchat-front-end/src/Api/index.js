@@ -36,6 +36,3 @@ export function deleteCanvas(canvas){
 	return axios({method: 'delete', url:"http://localhost:3000/api/v1/canvas" , data: {canvas}} ) 
 }
 
-export function editCanvas(canvasUrl,canvasName){
-	return axios({method: 'patch', url:"http://localhost:3000/api/v1/canvas" , data: {canvasUrl,canvasName}} ) 
-}

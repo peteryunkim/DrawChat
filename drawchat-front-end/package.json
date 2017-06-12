@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.1.1",
     "axios": "^0.16.2",
     "canvas": "^1.6.5",
     "jsdom": "^11.0.0",
