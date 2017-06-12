@@ -67,7 +67,7 @@ class DrawContainer extends React.Component {
 			<div className='col-md-2'>
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
-			<div className='col-md-6' id='container'>
+			<div className='col-md-10' id='container'>
 				{this.state.drawMode? <DisplayCanvas onSave={this.saveDrawing}name={this.state.canvasName}/> : null}
 			</div>	
 			</div>

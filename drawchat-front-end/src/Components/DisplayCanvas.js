@@ -10,6 +10,7 @@ class DisplayCanvas extends React.Component{
 			started: false
 		}
 	}
+
 	componentDidMount(){
 		let canvas= this.refs.canvas
 		let dataUrl= canvas.toDataURL()
@@ -57,10 +58,11 @@ class DisplayCanvas extends React.Component{
 			<div id='container'>
 			<h1 id='canvas-name'>{this.state.canvasName}
 				<p>
-					<button onClick={() => this.props.onSave(this.state.canvasUrl)}>Save</button>
+					<button className="btn btn-default btn-sm" onClick={() => this.props.onSave(this.state.canvasUrl)}>
+					<span className="glyphicon glyphicon-save" aria-hidden="true"></span>Save</button>
 				</p>
 			</h1>
-				<canvas ref='canvas' width='900' height='900' style={{border: '1px solid #000000'}}></canvas>
+				<canvas id='canvas' ref='canvas' width='900' height='900' style={{border: '1px solid #000000'}}></canvas>
 			</div>
 		)
 	}
