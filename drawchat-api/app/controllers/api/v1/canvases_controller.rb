@@ -12,6 +12,13 @@ class Api::V1::CanvasesController < ApplicationController
 	end
 
 	def update
+		
+		if canvas = Canvas.find_by(name: params[:canvasName])
+			canvas.update(canvasUrl: params[:canvasUrl])
+			render json: canvas
+		else 
+			render json: {error: 'not found'}
+		end
 
 	end
 
@@ -21,7 +28,7 @@ class Api::V1::CanvasesController < ApplicationController
 		render json: canvas
 	end
 
-	def show
+	def show #selectExistingDrawing
 		canvas = Canvas.find_by(name: params[:canvas][:name])
 		render json: canvas
 	end

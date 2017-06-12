@@ -8,10 +8,12 @@ class DrawContainer extends React.Component {
 	constructor(){
 		super()
 		this.state={
-			drawMode: false,
+			newCanvas: false,
+			selectCanvas: false,
 			canvasName: "",
 			canvasUrl: "",
-			existingCanvases: []
+			existingCanvases: [],
+			saved: false
 		}
 	}
 
@@ -30,27 +32,45 @@ class DrawContainer extends React.Component {
 
 	currentDrawing = (canvas) => {
 		this.setState({
-			drawMode: true,
-			canvasName: canvas
+			newCanvas: true,
+			canvasName: canvas,
+			selectCanvas: false,
+			saved: false
 		})
 	}
 
 	saveDrawing = (canvasUrl) => {
 		this.setState({
-			canvasUrl: canvasUrl
+			canvasUrl: canvasUrl,
+			saved: true
 		})
 		saveDrawingDB(canvasUrl,this.state.canvasName)
 		.then(res => this.setState(prevState => ({
-			existingCanvases: [...prevState.existingCanvases, res.data]
+			existingCanvases: [...prevState.existingCanvases, res.data],
+			saved: true
 		})))	
 	}
 
 	selectExistingCanvas = (name) => {
+		this.resetState()
 		selectExistingDrawing(name)
 		.then(res => this.setState({
 			canvasName: res.data.name,
-			canvasUrl: res.data.canvasUrl
+			canvasUrl: res.data.canvasUrl,
+			newCanvas: false,
+			selectCanvas: true,
+			saved: true
 		}))
+	}
+
+	resetState =() => {
+		this.setState({
+			newCanvas: false,
+			selectCanvas: false,
+			canvasName: "",
+			canvasUrl: "",
+			saved: false
+		})
 	}
 
 	handleDelete =(name)=>{
@@ -61,14 +81,15 @@ class DrawContainer extends React.Component {
 	}
 
 	render(){
-		console.log(this.state)
+		// console.log(this.state)
 		return(
 			<div>
 			<div className='col-md-2'>
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
 			<div className='col-md-10' id='container'>
-				{this.state.drawMode? <DisplayCanvas onSave={this.saveDrawing}name={this.state.canvasName}/> : null}
+				{this.state.newCanvas? <DisplayCanvas onSave={this.saveDrawing} saved={this.state.saved}newCanvas={this.state.newCanvas} name={this.state.canvasName}/> : null}
+				{this.state.selectCanvas? <DisplayCanvas onSave={this.saveDrawing} saved={this.state.saved}canvasUrl={this.state.canvasUrl} name={this.state.canvasName}/> : null}
 			</div>	
 			</div>
 		)

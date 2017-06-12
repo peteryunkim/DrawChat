@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//user account
 export function createUser(user){
 	return axios.post("http://localhost:3000/api/v1/users", user)	
 }
@@ -12,17 +13,19 @@ export function getAllUsers(){
 	return axios.get("http://localhost:3000/api/v1/users")
 }
 
+//chatroom
 export function getChatroom(users){
 	return axios.post("http://localhost:3000/api/v1/chatroom", users)
 }
 
+
+//canvas
 export function getDrawings(){
 	return axios.get("http://localhost:3000/api/v1/canvas")
-}
+} //populate list of canvas 
 
 export function saveDrawingDB(canvasUrl,canvasName){
 	return axios.post("http://localhost:3000/api/v1/canvas", {canvasUrl,canvasName})
-	// console.log('saving', {object, canvasName})
 }
 
 export function selectExistingDrawing(canvas){
@@ -31,4 +34,8 @@ export function selectExistingDrawing(canvas){
 
 export function deleteCanvas(canvas){
 	return axios({method: 'delete', url:"http://localhost:3000/api/v1/canvas" , data: {canvas}} ) 
+}
+
+export function editCanvas(canvasUrl,canvasName){
+	return axios({method: 'patch', url:"http://localhost:3000/api/v1/canvas" , data: {canvasUrl,canvasName}} ) 
 }
