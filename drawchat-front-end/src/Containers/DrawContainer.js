@@ -43,7 +43,6 @@ class DrawContainer extends React.Component {
 		this.setState({
 			canvasUrl: canvasUrl
 		})
-		console.log('saving')
 		saveDrawingDB(canvasUrl,this.state.canvasName)
 		.then(res => this.setState(prevState => ({
 			existingCanvases: [...prevState.existingCanvases, res.data],

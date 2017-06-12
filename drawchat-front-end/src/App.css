@@ -1,4 +1,4 @@
-.App {
+.App-Title {
   text-align: center;
 }
 
@@ -30,6 +30,10 @@
 
 #canvas-names {
   cursor: pointer;
+}
+#logout-button{
+  margin-right: 5px ;
+  float: right;
 }
 /*
 #chat-input{

@@ -29,8 +29,6 @@ class DisplayCanvas extends React.Component{
 		)
 
 		if (this.props.newCanvas === true){
-			let canvas= this.refs.canvas
-			let dataUrl= canvas.toDataURL()
 			this.setState({
 				canvasUrl: "",
 				canvasName: this.props.name,
@@ -40,7 +38,7 @@ class DisplayCanvas extends React.Component{
 		} else if (this.props.canvasUrl.length !== 0){
 			let canvas= this.refs.canvas
 			let ctx=canvas.getContext("2d")
-			let img = new Image;
+			let img = new Image();
 			this.setState({
 				canvasUrl: this.props.canvasUrl,
 				canvasName: this.props.name,
@@ -61,7 +59,7 @@ class DisplayCanvas extends React.Component{
 	changeCanvas = () => {
 			let canvas= this.refs.canvas
 			let ctx=canvas.getContext("2d")
-			let img = new Image;
+			let img = new Image();
 
 			img.onload = function(){
   			ctx.drawImage(img,0,0);
@@ -109,7 +107,6 @@ class DisplayCanvas extends React.Component{
 
 
 	render(){
-		console.log(this.state)
 		return(
 			<div id='container'>
 			<h1 id='canvas-name'>{this.state.canvasName}

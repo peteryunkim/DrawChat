@@ -9,21 +9,42 @@ import { withRouter } from 'react-router'
 const withRouterLogIn = withRouter(LoginOrSignupContainer)
 const LoggedInMain = isLoggedIn(Main)
 
-function App (props) {
+class App extends React.Component{
 
+  constructor(){
+    super()
+    this.state={
+      username: localStorage.getItem('username')
+    }
+  }
+
+  logout(){
+    localStorage.clear()
+    this.setState({
+      username: ""
+    })
+  }
+
+  render(){
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>DrawChat</h2>
+      <div >
+        <div className="navbar navbar-default">
+          <h2 className='App-Title'>DrawChat</h2>
+          <h3 className="navbar-text navbar-left">Current User: {this.state.username}</h3>
+          <button id='logout-button'className="btn btn-default navbar-btn" onClick={() => this.logout()}>Logout</button>
         </div>
         <Router>
           <div>
             <Route exact path='/login' component={withRouterLogIn}/> 
-            <Route path='/drawchat' render={() => <LoggedInMain cableApp={props.cableApp}/> }/>
+            <Route path='/drawchat' render={() => <LoggedInMain cableApp={this.props.cableApp}/> }/>
           </div>
         </Router>
       </div>
     );
+  }
+    
+
+  
 }
 
 export default App;

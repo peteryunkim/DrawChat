@@ -26,12 +26,11 @@ class Signup extends React.Component{
 		console.log(this.state)
 		return(
 			<div>
-				<form onSubmit={this.handleSubmit.bind(this)}>
-				<label>New Username</label>
-				<input onChange={e => this.handleChange('username', e.target.value)} value={this.state.username} type="text" placeholder="New Username"/>
-				<label>Password</label>
-				<input onChange={e => this.handleChange('password', e.target.value)} value={this.state.password} type="password" />
-				<button>Sign-Up!</button>
+			<h2>Sign up!</h2>
+				<form onSubmit={this.handleSubmit.bind(this)} className="input-group">
+				<input className="form-control" onChange={e => this.handleChange('username', e.target.value)} value={this.state.username} type="text" placeholder="New Username"/>
+				<input className="form-control" onChange={e => this.handleChange('password', e.target.value)} value={this.state.password} type="password" placeholder='Password'/>
+				<button className="btn btn-default navbar-btn">Sign-Up!</button>
 				</form>
 			</div>
 		)

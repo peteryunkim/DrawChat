@@ -23,13 +23,11 @@ class Login extends React.Component{
 
 	render(){
 		return(
-			<form onSubmit={this.handleSubmit.bind(this)}>
+			<form onSubmit={this.handleSubmit.bind(this)} className="input-group">
 			<h1>Please Log in</h1>
-				<label>Username: </label>
-				<input type="text" value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} placeholder="Username"></input>
-				<label>Password: </label>
-				<input type="password" value={this.state.password} onChange={e => this.handleChange('password', e.target.value)}/>
-				<button>Log-In</button>
+				<input className="form-control" type="text" value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} placeholder="Username"></input>
+				<input className="form-control" type="password" value={this.state.password} onChange={e => this.handleChange('password', e.target.value)}placeholder="Password"/>
+				<button className="btn btn-default navbar-btn">Log-In</button>
 			</form>
 		)
 	}
