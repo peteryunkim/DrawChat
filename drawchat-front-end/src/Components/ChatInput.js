@@ -25,8 +25,8 @@ class ChatInput extends React.Component{
 
 	render(){
 		return(
-			<form onSubmit={this.handleSubmit.bind(this)}>
-				<input type='text' value={this.state.messageInput} onChange={this.handleChange.bind(this)}placeholder="Enter message here..."/>
+			<form id='chat-input' onSubmit={this.handleSubmit.bind(this)}>
+				<input className="form-control" type='text' value={this.state.messageInput} onChange={this.handleChange.bind(this)} placeholder="Enter message here..."/>
 			</form>
 		)
 	}

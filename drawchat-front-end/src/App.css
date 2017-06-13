@@ -1,26 +1,33 @@
 .App-Title {
   text-align: center;
 }
-
-
 .App-header {
   background-color: #222;
   height: 75px;
   padding: 20px;
   color: white;
 }
-
 .App-intro {
   font-size: large;
+}
+.row{
+  border: 1px solid black;
 }
 
 #canvas-name{
   margin: auto;
   text-align: center;
 }
-
 #canvas{
   cursor: crosshair;
+}
+#canvas-names {
+  cursor: pointer;
+}
+
+
+#chat-container{
+  border: 1px solid blue;
 }
 
 #message-list{
@@ -28,19 +35,6 @@
   bottom: 0;
   border: 1px solid red
 }
-
-#canvas-names {
-  cursor: pointer;
-}
-#logout-button{
-  margin-right: 5px ;
-  float: right;
-}
-
-.row{
-  border: 1px solid black;
-}
-
 #message-sender{
   text-align: right;
 
@@ -48,6 +42,15 @@
 #message{
   text-align: right
 }
-#chat-container{
-  border: 1px solid blue;
+
+#logout-button{
+  margin-right: 5px ;
+  float: right;
 }
+
+input{
+  text-align: center;
+}
+
+
+

@@ -113,7 +113,6 @@ class DisplayCanvas extends React.Component{
 
 
 	render(){
-		console.log(this.state)
 		return(
 			<div id='container'>
 				<div className='row'>
@@ -126,6 +125,7 @@ class DisplayCanvas extends React.Component{
 				<div className='col-md-4'>
 					<input type="range" min="0" max="25" step="0.25" value={this.state.lineWidth} onChange={this.handleLineChange}/>
 					<input type="color"/>
+					<button onClick={() => console.log('ERASER')}className="btn btn-default navbar-btn">Eraser</button>
 				</div>
 				</div>
 				<canvas id='canvas' ref='canvas' width='700' height='700' style={{border: '1px solid #000000'}}></canvas>
