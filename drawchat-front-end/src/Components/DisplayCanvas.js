@@ -11,7 +11,8 @@ class DisplayCanvas extends React.Component{
 			canvasUrl: "",
 			started: false,
 			canvasName: "",
-			saved: false
+			saved: false,
+			lineWidth: 2
 		}
 	}
 
@@ -50,7 +51,6 @@ class DisplayCanvas extends React.Component{
 		}
 		this.changeCanvas()
 		this.drawingOnCanvas()
-		
 	}	
 	
 	
@@ -68,6 +68,7 @@ class DisplayCanvas extends React.Component{
 	drawingOnCanvas = () => {
 		let canvas= this.refs.canvas
 		let ctx=canvas.getContext("2d")
+		ctx.lineWidth = this.state.lineWidth
 
 		let tool = new ToolPencil( canvas, ctx, this.handleChange);
 		canvas.addEventListener('mousedown', ev_canvas, false);
@@ -103,8 +104,16 @@ class DisplayCanvas extends React.Component{
 		}
 	}
 
+	handleLineChange =(e) => {
+		this.setState({
+			lineWidth: e.target.value
+		})
+		console.log('changing', e.target.value)
+	}
+
 
 	render(){
+		console.log(this.state)
 		return(
 			<div id='container'>
 				<div className='row'>
@@ -115,7 +124,7 @@ class DisplayCanvas extends React.Component{
 					</p>
 				</h1>
 				<div className='col-md-4'>
-					<input type="range"/>
+					<input type="range" min="0" max="25" step="0.25" value={this.state.lineWidth} onChange={this.handleLineChange}/>
 					<input type="color"/>
 				</div>
 				</div>

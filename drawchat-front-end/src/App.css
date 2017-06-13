@@ -41,6 +41,13 @@
   border: 1px solid black;
 }
 
+#message-sender{
+  text-align: right;
+
+}
+#message{
+  text-align: right
+}
 #chat-container{
   border: 1px solid blue;
 }
