@@ -9,7 +9,7 @@ function Main(props){
 					<DrawContainer cableApp={props.cableApp}/>
 				</div>
 				<div id="chat-container" className='col-md-4 col-sm-4'>	
-					<ChatContainer />
+					<ChatContainer cableApp={props.cableApp}/>
 				</div>
 			</div>
 		)

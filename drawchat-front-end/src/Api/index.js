@@ -14,8 +14,11 @@ export function getAllUsers(){
 }
 
 //chatroom
-export function getChatroom(users){
-	return axios.post("http://localhost:3000/api/v1/chatroom", users)
+export function getMessages(){
+	return axios.get("http://localhost:3000/api/v1/messages")
+}
+export function postMessage(message, userId){
+	return axios.post("http://localhost:3000/api/v1/messages", {message, userId})
 }
 
 

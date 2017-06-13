@@ -4,37 +4,37 @@ import Signup from '../Components/Signup'
 import { createUser, signIn } from '../Api/index'
 
 function LoginOrSignupContainer(props){
-
+	let error;
 
 	function handleNewUser(newUserInfo){
 		createUser(newUserInfo)
 			.then(function(res){
 				if (res.data.error){
-					dupe(res.data.error)
+					return error = res.data.error
 				} else {
 					localStorage.setItem('jwt', res.data.token)
 					localStorage.setItem('username', res.data.user.username)
 					localStorage.setItem('id', parseInt(res.data.user.id))
-					props.history.push('/drawchat')
+					props.history.push('/')
 				}
 			})
 	}
 
 	function handleSignIn(prop){
 		signIn(prop)
-		.then( res => (
-			localStorage.setItem('jwt', res.data.token),
-			localStorage.setItem('username', res.data.user.username),
-			localStorage.setItem('id', parseInt(res.data.user.id)),
-			props.history.push('/drawchat')
-		))
+		.then(function(res){
+				if (res.data.error){
+					return error = res.data.error
+				} else {
+					localStorage.setItem('jwt', res.data.token)
+					localStorage.setItem('username', res.data.user.username)
+					localStorage.setItem('id', parseInt(res.data.user.id))
+					props.history.push('/')
+				}
+			})
+		console.log(error)
 	}
 
-	const dupe = function handleDuplicateUsername(error){
-		return (
-			<h3>{error}</h3>
-		)
-	}
 
 	return(
 		<div className="row">
@@ -47,7 +47,7 @@ function LoginOrSignupContainer(props){
 			<div className='col-md-4'>
 				<Signup onSubmit={handleNewUser}/>
 			</div>
-				{dupe() ? dupe() : null}
+			{error ? <h1>{error}</h1> : <h1>{error}</h1>}
 		</div>
 	)
 }

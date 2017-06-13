@@ -1,35 +1,35 @@
 import React from 'react'
 import Message from './Message'
 import ChatInput from './ChatInput'
-import { getChatroom } from '../Api/index'
+import { getMessages } from '../Api/index'
 
 class ChatBox extends React.Component{
 	constructor(){
 		super()
 		this.state={
-			messages: ['testing message', 'test mess']
+			messages: []
 		}
 	}
 
-	componentDidMount(props){
-		getChatroom(this.props)
-		.then( res => console.log )
+	componentDidMount(){
+		this.props.cableApp.message = this.props.cableApp.cable.subscriptions.create('MessageChannel',
+		{
+			received: res => this.setState({
+				messages: [...this.state.messages, res]
+			})
+		}, getMessages()
+		.then( res => this.setState({
+			messages: res.data
+			})) )
 	}
 
-	componentWillReceiveProps(nextProps){
-		getChatroom(nextProps.allUsers)
-	}
-
-	messageHandler(message){
-		// sendMessage(message)
-		this.setState({
-			messages: [...this.state.messages, message]
-		})
+	messageHandler(message, userId){
+		this.props.cableApp.message.send({message: message, userId: userId})
 	}
 	
 	render(){
-		console.log(this.props)
-	const messageList = this.state.messages.map((mes, i) => <Message key={i} content={mes}/>)
+		console.log(this.state)
+	const messageList = this.state.messages.map((mes, i) => <Message key={i} user={mes.user.username}content={mes.content}/>)
 		return(
 			<div id='message-list'>
 				{messageList}
@@ -41,3 +41,5 @@ class ChatBox extends React.Component{
 }
 
 export default ChatBox
+
+

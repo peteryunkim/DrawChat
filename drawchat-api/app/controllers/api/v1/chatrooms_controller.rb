@@ -32,6 +32,22 @@ class Api::V1::ChatroomsController < ApplicationController
 		#chatroom_messages = ChatroomUser.find_or_create_by(user_id: array_Ids).chatroom.messages
 
 
+
+# select * from users
+# join chatroom_users on chatroom_users.user_id = users.id
+# where chatroom_users.user_id in (2,1)
+# and not exists (
+#   select *
+#   from chatroom_users AS cu
+#   where cu.user_id = users.id
+#   and cu.user_id not in (2,1)
+# )
+# group by chatroom_users.user_id
+# having count(chatroom_users.user_id) = 2
+
+ #  SELECT chatroom.*
+
+
 	end
 
 	def index

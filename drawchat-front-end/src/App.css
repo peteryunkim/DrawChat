@@ -26,6 +26,7 @@
 #message-list{
   position: relative;
   bottom: 0;
+  border: 1px solid red
 }
 
 #canvas-names {
@@ -35,18 +36,11 @@
   margin-right: 5px ;
   float: right;
 }
-/*
-#chat-input{
-	position: absolute; 
-	bottom: 0;
-}
-#chats{
-	margin: 91px;
-}
-#chat-container{
-	border: 1px solid #999; right:0; position: absolute; bottom: 0; margin: 0 150px; 
+
+.row{
+  border: 1px solid black;
 }
 
-#message-list{ 
-	padding: 1px; 
-}*/
+#chat-container{
+  border: 1px solid blue;
+}

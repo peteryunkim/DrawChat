@@ -3,7 +3,12 @@ import React from 'react'
 function Message(props){
 
 	return(
-		<h5> {props.content}</h5>
+		<h5> 
+			<div id='message-sender'>
+				{props.user}:
+			</div>
+			{props.content}
+		</h5>
 	)
 }
 

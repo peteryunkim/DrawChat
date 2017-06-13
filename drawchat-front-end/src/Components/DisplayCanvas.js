@@ -24,9 +24,7 @@ class DisplayCanvas extends React.Component{
 			{this.changeCanvas()
 			this.drawingOnCanvas()
 			})
-			// received: canvasData => console.log(canvasData)
-		}
-		)
+		})
 
 		if (this.props.newCanvas === true){
 			this.setState({
@@ -109,12 +107,18 @@ class DisplayCanvas extends React.Component{
 	render(){
 		return(
 			<div id='container'>
-			<h1 id='canvas-name'>{this.state.canvasName}
-				<p>
-					<button className="btn btn-default btn-sm" onClick={() => this.saveButton()}>
-					<span className="glyphicon glyphicon-save" aria-hidden="true"></span>Save</button>
-				</p>
-			</h1>
+				<div className='row'>
+				<h1 className='col-md-4' id='canvas-name'>{this.state.canvasName}
+					<p>
+						{this.state.saved? null : <button className="btn btn-default btn-sm" onClick={() => this.saveButton()}>
+						<span className="glyphicon glyphicon-save" aria-hidden="true"></span>Save</button>}
+					</p>
+				</h1>
+				<div className='col-md-4'>
+					<input type="range"/>
+					<input type="color"/>
+				</div>
+				</div>
 				<canvas id='canvas' ref='canvas' width='700' height='700' style={{border: '1px solid #000000'}}></canvas>
 			</div>
 		)

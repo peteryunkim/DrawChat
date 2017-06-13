@@ -8,10 +8,9 @@ Rails.application.routes.draw do
 
   		resources :users
 
-  		post '/chatroom', to: 'chatrooms#show'
-  		get '/chatrooms', to: 'chatrooms#index'
+  		get '/messages', to: 'messages#index'
+  		post '/messages', to: 'messages#create'
 
-  		post '/message', to: 'messages#create'
 
   		get '/canvas', to: 'canvases#index'
   		post '/canvas', to: 'canvases#create'
