@@ -79,13 +79,12 @@ class DrawContainer extends React.Component {
 	}
 
 	render(){
-		// console.log(this.state)
 		return(
-			<div>
-			<div className='col-md-2'>
+			<div id='canvas container'>
+			<div className='col-md-3'>
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
-			<div className='col-md-10' id='container'>
+			<div className='col-md-9' id='container'>
 				{this.state.newCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}newCanvas={this.state.newCanvas} name={this.state.canvasName}/> : null}
 				{this.state.selectCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}canvasUrl={this.state.canvasUrl} name={this.state.canvasName}/> : null}
 			</div>	

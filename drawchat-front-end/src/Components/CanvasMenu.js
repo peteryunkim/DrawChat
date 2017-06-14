@@ -6,9 +6,12 @@ function CanvasMenu (props){
 
 
 		return(
-			<div>
+			<div id='canvas-menu'>
 				<NewCanvasForm newDrawing={props.newDrawing}/>
-				<CanvasList onDelete={props.onDelete} selectCanvas={props.selectCanvas} allCanvases={props.allCanvases}/>
+				<div id='canvas-history'>
+				<h3>Canvas History</h3>
+					<CanvasList onDelete={props.onDelete} selectCanvas={props.selectCanvas} allCanvases={props.allCanvases}/>
+				</div>
 			</div>
 		)
 

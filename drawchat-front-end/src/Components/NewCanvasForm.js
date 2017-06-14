@@ -28,9 +28,9 @@ class NewCanvasForm
 	render(){
 		return(
 			<div>
-			<h3>Create a new canvas</h3>
+			<h3>New canvas?</h3>
 			<form onSubmit={this.handleSubmit.bind(this)}>
-				<input type="text" value={this.state.name} onChange={this.handleChange.bind(this)} placeholder="New canvas name..."/>
+				<input className="form-control" type="text" value={this.state.name} onChange={this.handleChange.bind(this)} placeholder="Canvas Name..."/>
 			</form>
 			</div>
 		)

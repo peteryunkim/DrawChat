@@ -35,7 +35,6 @@ class ChatBox extends React.Component{
 	}
 	
 	render(){
-		console.log(this.state)
 	const messageList = this.state.messages.map((mes, i) => <Message key={i} user={mes.user.username}content={mes.content}/>)
 		return(
 			<div>

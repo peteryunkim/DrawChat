@@ -11,8 +11,7 @@ class DisplayCanvas extends React.Component{
 			canvasUrl: "",
 			started: false,
 			canvasName: "",
-			saved: false,
-			lineWidth: 2
+			saved: false
 		}
 	}
 
@@ -22,9 +21,9 @@ class DisplayCanvas extends React.Component{
 			received: canvasData => this.setState({
 				canvasUrl: canvasData.canvasUrl
 			}, () => 
-			{this.changeCanvas()
-			this.drawingOnCanvas()
-			})
+				{this.changeCanvas()
+				this.drawingOnCanvas()
+				})
 		})
 
 		if (this.props.newCanvas === true){
@@ -35,16 +34,16 @@ class DisplayCanvas extends React.Component{
 			})
 			this.drawingOnCanvas()
 		} else if (this.props.canvasUrl.length !== 0){
-			let canvas= this.refs.canvas
-			let ctx=canvas.getContext("2d")
-			let img = new Image();
-			this.setState({
-				canvasUrl: this.props.canvasUrl,
-				canvasName: this.props.name,
-				saved: this.props.saved
-			})
-			img.onload = function(){
-  			ctx.drawImage(img,0,0);
+				let canvas = document.getElementById('canvas')
+				let ctx = canvas.getContext("2d")
+				let img = new Image();
+				this.setState({
+					canvasUrl: this.props.canvasUrl,
+					canvasName: this.props.name,
+					saved: this.props.saved
+				})
+				img.onload = function(){
+	  			ctx.drawImage(img,0,0);
   		}
   		img.src = this.props.canvasUrl
 			this.drawingOnCanvas()
@@ -55,20 +54,19 @@ class DisplayCanvas extends React.Component{
 	
 	
 	changeCanvas = () => {
-			let canvas= this.refs.canvas
-			let ctx=canvas.getContext("2d")
-			let img = new Image();
+		let canvas = document.getElementById('canvas')
+		let ctx = canvas.getContext("2d")
+		let img = new Image();
 
-			img.onload = function(){
-  			ctx.drawImage(img,0,0);
-  		}
-  		img.src = this.state.canvasUrl
+		img.onload = function(){
+			ctx.drawImage(img,0,0);
+		}
+		img.src = this.state.canvasUrl
 	}
 
 	drawingOnCanvas = () => {
-		let canvas= this.refs.canvas
-		let ctx=canvas.getContext("2d")
-		ctx.lineWidth = this.state.lineWidth
+		let canvas = document.getElementById('canvas')
+		let ctx = canvas.getContext("2d")
 
 		let tool = new ToolPencil( canvas, ctx, this.handleChange);
 		canvas.addEventListener('mousedown', ev_canvas, false);
@@ -105,10 +103,21 @@ class DisplayCanvas extends React.Component{
 	}
 
 	handleLineChange =(e) => {
-		this.setState({
-			lineWidth: e.target.value
-		})
-		console.log('changing', e.target.value)
+		let canvas = document.getElementById('canvas')
+		let ctx = canvas.getContext("2d")
+		ctx.lineWidth = e.target.value
+	}
+
+	handleColorChange = (e) => {
+		let canvas = document.getElementById('canvas')
+		let ctx = canvas.getContext("2d")
+		ctx.strokeStyle = e.target.value
+	}
+
+	eraserMode = () => {
+		let canvas = document.getElementById('canvas')
+		let ctx = canvas.getContext("2d")
+		ctx.strokeStyle = '#ffffff'
 	}
 
 
@@ -116,19 +125,19 @@ class DisplayCanvas extends React.Component{
 		return(
 			<div id='container'>
 				<div className='row'>
-				<h1 className='col-md-4' id='canvas-name'>{this.state.canvasName}
+				<h1 className='col-md-7' id='canvas-name'>{this.state.canvasName}
 					<p>
 						{this.state.saved? null : <button className="btn btn-default btn-sm" onClick={() => this.saveButton()}>
 						<span className="glyphicon glyphicon-save" aria-hidden="true"></span>Save</button>}
 					</p>
 				</h1>
-				<div className='col-md-4'>
-					<input type="range" min="0" max="25" step="0.25" value={this.state.lineWidth} onChange={this.handleLineChange}/>
-					<input type="color"/>
-					<button onClick={() => console.log('ERASER')}className="btn btn-default navbar-btn">Eraser</button>
+				<div className='col-md-4' id='canvas-tool'>
+					<input type="range" min="0" max="20" step="0.25" defaultValue="1" onChange={this.handleLineChange}/>
+					<input type="color" onChange={this.handleColorChange}/>
+					<button onClick={() => this.eraserMode()}className="btn btn-default navbar-btn">Eraser</button>
 				</div>
 				</div>
-				<canvas id='canvas' ref='canvas' width='700' height='700' style={{border: '1px solid #000000'}}></canvas>
+				<canvas id='canvas' ref='canvas' width='625' height='450' style={{border: '1px solid #000000'}}></canvas>
 			</div>
 		)
 	}

@@ -10,9 +10,9 @@
 .App-intro {
   font-size: large;
 }
-.row{
+/*.row{
   border: 1px solid black;
-}
+}*/
 input{
   text-align: center;
 }
@@ -25,32 +25,42 @@ input{
 #canvas-name{
   margin: auto;
   text-align: center;
+  font-family: 'Herculanum', Arial;
 }
 #canvas{
   cursor: crosshair;
 }
+#canvas-tool{
+  float: right
+}
 #canvas-names {
   cursor: pointer;
 }
+#canvas-history{
+  height: 400px;
+  overflow: scroll;
+}
+
 
 /*    CHAT       */
 #chat-container{
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   height: 500px;
   width: 400px;
   overflow: hidden;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 #message-list{
   position: relative;
   bottom: 0;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   height: 500px;
   width: 350px;
   overflow: scroll;
-
+  display: flex;
+  flex-direction: column;
 }
 
 #message{
