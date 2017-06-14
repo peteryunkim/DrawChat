@@ -20,7 +20,9 @@ class ChatBox extends React.Component{
 		}, getMessages()
 		.then( res => this.setState({
 			messages: res.data
-			})) )
+			}))
+		)
+
 	}
 
 	messageHandler(message, userId){
@@ -31,9 +33,11 @@ class ChatBox extends React.Component{
 		console.log(this.state)
 	const messageList = this.state.messages.map((mes, i) => <Message key={i} user={mes.user.username}content={mes.content}/>)
 		return(
-			<div id='message-list'>
-				{messageList}
+			<div>
+				<div ref='list' id='message-list'>
+					{messageList}
 				<ChatInput onSend={this.messageHandler.bind(this)}/>
+				</div>
 			</div>
 		)
 	}
