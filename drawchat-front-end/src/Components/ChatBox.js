@@ -22,11 +22,16 @@ class ChatBox extends React.Component{
 			messages: res.data
 			}))
 		)
+	}
 
+	focusBottomChat(){
+		setTimeout(function(){ let list = document.getElementById('message-list')
+		list.scrollTop = list.scrollHeight }, 100)
 	}
 
 	messageHandler(message, userId){
 		this.props.cableApp.message.send({message: message, userId: userId})
+		this.focusBottomChat()
 	}
 	
 	render(){

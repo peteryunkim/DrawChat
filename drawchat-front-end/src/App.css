@@ -38,7 +38,9 @@ input{
   border: 1px solid blue;
   height: 500px;
   width: 400px;
-  overflow: hidden
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 #message-list{
@@ -47,7 +49,8 @@ input{
   border: 1px solid red;
   height: 500px;
   width: 350px;
-  overflow: scroll
+  overflow: scroll;
+
 }
 
 #message{
