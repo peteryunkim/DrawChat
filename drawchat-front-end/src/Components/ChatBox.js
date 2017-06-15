@@ -16,12 +16,24 @@ class ChatBox extends React.Component{
 		{
 			received: res => this.setState({
 				messages: [...this.state.messages, res]
-			})
+			}, () => {let list = document.getElementById('message-list')
+			list.scrollTop = list.scrollHeight})
 		}, getMessages()
 		.then( res => this.setState({
 			messages: res.data
 			}))
 		)
+		this.onChatLoad()
+	}
+
+	onChatLoad = () => {
+		let body = document.body
+		const oneTime = () => {
+			let list = document.getElementById('message-list')
+			list.scrollTop = list.scrollHeight
+			body.removeEventListener('mousemove', oneTime, false)
+		}
+		body.addEventListener('mousemove', oneTime, false)
 	}
 
 	focusBottomChat(){

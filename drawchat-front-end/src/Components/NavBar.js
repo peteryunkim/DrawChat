@@ -12,7 +12,7 @@ class NavBar extends React.Component{
 		return(
 			<nav className="navbar navbar-default">
 				<div>
-		      <img className='logo' src='./sketch%20chat-03.png' width='150px' heigth='75px'/>
+		      <img alt='DrawChat!'className='logo' src='./sketch%20chat-03.png' width='150px'/>
 		    </div>
 					<button id='logout-button' className="btn btn-default btn-md">Logout</button>
 			</nav>

@@ -27,7 +27,14 @@ class DrawContainer extends React.Component {
 
 
 	newDrawing(canvas){
-		this.currentDrawing(canvas)
+		this.setState({
+			newCanvas: false,
+			selectCanvas: false,
+			canvasName: "",
+			canvasUrl: "",
+			saved: false
+		},() => this.currentDrawing(canvas))
+		
 	}
 
 	currentDrawing = (canvas) => {
@@ -51,6 +58,7 @@ class DrawContainer extends React.Component {
 
 	selectExistingCanvas = (name) => {
 		this.resetState()
+
 		selectExistingDrawing(name)
 		.then(res => this.setState({
 			canvasName: res.data.name,
