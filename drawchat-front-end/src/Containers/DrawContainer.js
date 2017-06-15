@@ -89,7 +89,6 @@ class DrawContainer extends React.Component {
 		} else {
 			return alert(`${name.name} not deleted!`)
 		}
-		
 	}
 
 	render(){

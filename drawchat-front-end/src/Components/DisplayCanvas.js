@@ -21,7 +21,7 @@ class DisplayCanvas extends React.Component{
 			received: canvasData => this.setState({
 				canvasUrl: canvasData.canvasUrl
 			}, () => 
-				{this.changeCanvas()
+				{this.loadCanvas()
 				this.drawingOnCanvas()
 				})
 		})
@@ -48,12 +48,12 @@ class DisplayCanvas extends React.Component{
   		img.src = this.props.canvasUrl
 			this.drawingOnCanvas()
 		}
-		this.changeCanvas()
+		this.loadCanvas()
 		this.drawingOnCanvas()
 	}	
 	
 	
-	changeCanvas = () => {
+	loadCanvas = () => {
 		let canvas = document.getElementById('canvas')
 		let ctx = canvas.getContext("2d")
 		let img = new Image();
@@ -86,7 +86,6 @@ class DisplayCanvas extends React.Component{
 				func(x,y);
 			}
 		}
-
 	}
 
 	saveButton(){
@@ -99,6 +98,11 @@ class DisplayCanvas extends React.Component{
 	handleChange = (url) => {
 		if(this.state.saved){
 			this.props.cableApp.canvas.send({canvasUrl: url, canvasName: this.props.name})
+		} else {
+			const data = document.getElementById('canvas').toDataURL();
+			this.setState({
+				canvasUrl: data
+			})
 		}
 	}
 
@@ -123,6 +127,7 @@ class DisplayCanvas extends React.Component{
 
 
 	render(){
+		console.log(this.state)
 		return(
 			<div id='container'>
 				<div className='row'>
