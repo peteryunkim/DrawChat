@@ -37,6 +37,9 @@ input{
 }
 
 /*    NAVBAR    */
+.navbar { 
+  height: 100px;
+}
 .logo{
   display: block;
   margin: auto;
@@ -44,7 +47,7 @@ input{
 #logout-button{
   float: right;
   position: relative;
-  bottom: 40px !important;
+  bottom: 60px !important;
   right: 20px;
 }
 
@@ -85,7 +88,7 @@ input{
   cursor: pointer;
 }
 #canvas-history{
-  height: 400px;
+  height: 450px;
   overflow: scroll;
 }
 #eraser{
@@ -96,7 +99,7 @@ input{
 /*    CHAT       */
 #chat-container{
   /*border: 1px solid blue;*/
-  height: 500px;
+  height: 540px;
   width: 400px;
   overflow: hidden;
   left: 50px;
@@ -105,7 +108,7 @@ input{
   position: relative;
   bottom: 0;
   /*border: 1px solid red;*/
-  height: 500px;
+  height: 540px;
   width: 350px;
   overflow: auto;
   background-color: #ffffff;
