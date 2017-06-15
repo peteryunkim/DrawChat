@@ -65,6 +65,7 @@ input{
   font-size: 50px;
   left: 10px;
   top: 8px;
+  text-shadow: 3px 3px 8px #fff;
 }
 #canvas{
   cursor: crosshair;
