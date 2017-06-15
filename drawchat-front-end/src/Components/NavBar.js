@@ -4,7 +4,8 @@ class NavBar extends React.Component{
 
 
 	handleLogout = () => {
-		this.props.onLogout()
+		localStorage.clear()
+		window.location.reload()
 	}
 
 
@@ -14,7 +15,7 @@ class NavBar extends React.Component{
 				<div>
 		      <img alt='DrawChat!'className='logo' src='./sketch%20chat-03.png' width='150px'/>
 		    </div>
-					<button id='logout-button' className="btn btn-default btn-md">Logout</button>
+					<button id='logout-button' className="btn btn-default btn-md" onClick={() =>this.handleLogout()}>Logout</button>
 			</nav>
 		)
 	}

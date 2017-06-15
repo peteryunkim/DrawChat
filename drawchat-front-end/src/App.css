@@ -5,6 +5,22 @@ body{
 input{
   text-align: center;
 }
+.error{
+  color: #b31804;
+  text-shadow: 3px 3px 8px #fff;
+  font-weight: bold;
+}
+.authentication{
+  text-shadow: 3px 3px 10px #fff;
+}
+#login{
+  position: relative;
+  left: 20px;
+}
+#signup{
+  position: relative;
+  left: 20px;
+}
 
 /*    APP    */
 .App-Title {

@@ -4,13 +4,13 @@ import Signup from '../Components/Signup'
 import { createUser, signIn } from '../Api/index'
 
 function LoginOrSignupContainer(props){
-	let error;
 
 	function handleNewUser(newUserInfo){
 		createUser(newUserInfo)
 			.then(function(res){
 				if (res.data.error){
-					return error = res.data.error
+					localStorage.setItem('error', res.data.error)
+					props.history.push('/login')
 				} else {
 					localStorage.setItem('jwt', res.data.token)
 					localStorage.setItem('username', res.data.user.username)
@@ -24,7 +24,8 @@ function LoginOrSignupContainer(props){
 		signIn(prop)
 		.then(function(res){
 				if (res.data.error){
-					return error = res.data.error
+					localStorage.setItem('error', res.data.error)
+					props.history.push('/login')
 				} else {
 					localStorage.setItem('jwt', res.data.token)
 					localStorage.setItem('username', res.data.user.username)
@@ -32,19 +33,19 @@ function LoginOrSignupContainer(props){
 					props.history.push('/')
 				}
 			})
-		console.log(error)
 	}
 
 
 	return(
 		<div>
 		<div className='row'>
-			<div className='col-md-4'>
+			<div id='login' className='col-md-4'>
 					<Login signIn={handleSignIn}/>
 			</div>
 		</div>
+		{localStorage.getItem('error') ? <h1 className='error'>{localStorage.getItem('error')}</h1> : null}
 		<div className='row'>
-			<div className='col-md-4'>
+			<div id='signup' className='col-md-4'>
 				<Signup onSubmit={handleNewUser}/>
 			</div>
 		</div>	

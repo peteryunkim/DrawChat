@@ -26,7 +26,7 @@ class Signup extends React.Component{
 		console.log(this.state)
 		return(
 			<div>
-			<h2>Sign up!</h2>
+			<h2 className='authentication'>Sign up!</h2>
 				<form onSubmit={this.handleSubmit.bind(this)} className="input-group">
 				<input className="form-control" onChange={e => this.handleChange('username', e.target.value)} value={this.state.username} type="text" placeholder="New Username"/>
 				<input className="form-control" onChange={e => this.handleChange('password', e.target.value)} value={this.state.password} type="password" placeholder='Password'/>
