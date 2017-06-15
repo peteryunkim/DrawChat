@@ -72,16 +72,22 @@ class DrawContainer extends React.Component {
 	}
 
 	handleDelete =(name)=>{
-		deleteCanvas(name)
+		const prompt = window.prompt(`Are you sure you want to delete "${name.name}"? If so, please type the canvas name (case sensitive).`)
+		if (prompt === name.name){
+			deleteCanvas(name)
 		.then( res => this.setState({
 			existingCanvases: this.state.existingCanvases.filter( list => list.name !== res.data.name)
 		}))
+		} else {
+			return alert(`${name.name} not deleted!`)
+		}
+		
 	}
 
 	render(){
 		return(
-			<div id='canvas container'>
-			<div className='col-md-3'>
+			<div id='canvas-container'>
+			<div id='canvas-menu' className='col-md-3'>
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
 			</div>	
 			<div className='col-md-9' id='container'>

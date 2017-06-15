@@ -1,3 +1,12 @@
+body{
+  background: url("https://www.walldevil.com/wallpapers/a42/banksy-wallpapers-wallpaper-people.jpg");
+  z-index: -1;
+}
+input{
+  text-align: center;
+}
+
+/*    APP    */
 .App-Title {
   text-align: center;
 }
@@ -10,35 +19,61 @@
 .App-intro {
   font-size: large;
 }
-/*.row{
-  border: 1px solid black;
-}*/
-input{
-  text-align: center;
+
+/*    NAVBAR    */
+.logo{
+  display: block;
+  margin: auto;
 }
 #logout-button{
-  margin-right: 5px ;
   float: right;
+  position: relative;
+  bottom: 40px !important;
+  right: 20px;
 }
 
 /*    CANVAS       */
+#canvas-menu{
+  background-color: #ffffff;
+  border-radius: 10px;
+}
 #canvas-name{
   margin: auto;
   text-align: center;
   font-family: 'Herculanum', Arial;
+  font-weight: bold;
+  color: #b31804;
+  font-size: 50px;
+  left: 10px;
+  top: 8px;
 }
 #canvas{
   cursor: crosshair;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 #canvas-tool{
-  float: right
+  float: right;
+  background-color: #ffffff;
+  border-radius: 10px;
+  opacity: 0.95;
+}
+.color-chooser{
+  position: relative;
+  top: 13px;
 }
 #canvas-names {
+  cursor: pointer;
+}
+#delete-canvas-name{
   cursor: pointer;
 }
 #canvas-history{
   height: 400px;
   overflow: scroll;
+}
+#eraser{
+  float: right;
 }
 
 
@@ -48,35 +83,41 @@ input{
   height: 500px;
   width: 400px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  left: 50px;
 }
-
 #message-list{
   position: relative;
   bottom: 0;
   /*border: 1px solid red;*/
   height: 500px;
   width: 350px;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
-
 #message{
   text-align: right;
-  background-color: #f8f8f8;
+  /*background-color: #fff6a6;*/
+  background-color: #e1ffcc;
   border: 1px solid #c8c8c8;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2px;
 }
-
 #message-sender{
   text-align: left;
-  background-color: #f8f8f8;
+  /*background-color: #9cfffd; */
+  background-color: #a5d7ff;
   border: 1px solid #c8c8c8;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2px;
+}
+#you{
+  font-weight: bold;
+}
+#not-you{
+  font-weight: bold;
 }
 
 

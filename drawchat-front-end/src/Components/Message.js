@@ -5,14 +5,12 @@ function Message(props){
 	const sender= ()=>{
 		if (props.user === localStorage.getItem('username')){
 				return (<h5 id='message-sender'> 
-					You:
-					<br/>
+					<div id='you'>You</div>
 					{props.content}
 				</h5>)
 		} else {
 			return (<h5 id='message'> 
-					{props.user}:
-					<br/>
+					<div id='not-you'>{props.user}</div>
 					{props.content}
 				</h5>)
 		}

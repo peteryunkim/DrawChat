@@ -112,6 +112,7 @@ class DisplayCanvas extends React.Component{
 		let canvas = document.getElementById('canvas')
 		let ctx = canvas.getContext("2d")
 		ctx.strokeStyle = e.target.value
+		console.log(ctx.strokeStyle)
 	}
 
 	eraserMode = () => {
@@ -132,9 +133,11 @@ class DisplayCanvas extends React.Component{
 					</p>
 				</h1>
 				<div className='col-md-4' id='canvas-tool'>
+					<label>Line Width</label>
 					<input type="range" min="0" max="20" step="0.25" defaultValue="1" onChange={this.handleLineChange}/>
-					<input type="color" onChange={this.handleColorChange}/>
-					<button onClick={() => this.eraserMode()}className="btn btn-default navbar-btn">Eraser</button>
+						<label className='color-chooser'>Color:</label>
+					<input className='color-chooser' type="color" onChange={this.handleColorChange}/>
+					<button id='eraser' onClick={() => this.eraserMode()} className="btn btn-default navbar-btn">Eraser</button>
 				</div>
 				</div>
 				<canvas id='canvas' ref='canvas' width='625' height='450' style={{border: '1px solid #000000'}}></canvas>
