@@ -1,6 +1,6 @@
 body{
-/*  background: url("https://www.walldevil.com/wallpapers/a42/banksy-wallpapers-wallpaper-people.jpg");
-*/  z-index: -1;
+  background: url("https://www.walldevil.com/wallpapers/a42/banksy-wallpapers-wallpaper-people.jpg");
+  z-index: -1;
 }
 input{
   text-align: center;
@@ -47,7 +47,7 @@ input{
 #logout-button{
   float: right;
   position: relative;
-  bottom: 60px !important;
+  bottom: 90px !important;
   right: 20px;
 }
 
@@ -104,6 +104,7 @@ input{
   width: 400px;
   overflow: hidden;
   left: 50px;
+  top: -35px;
 }
 #message-list{
   position: relative;
