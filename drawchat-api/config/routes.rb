@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   namespace :api do
   	namespace :v1 do
   		post '/auth', to: 'auth#create'
-
-  		resources :users
+      post '/user', to: 'users#show'
+  		resources :users, only: :create
 
   		get '/messages', to: 'messages#index'
   		post '/messages', to: 'messages#create'

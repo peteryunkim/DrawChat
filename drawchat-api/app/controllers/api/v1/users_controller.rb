@@ -23,6 +23,8 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def show
+		#need to decode JWT, return user information
+		byebug
 		user = User.find_by(username: params[:username])
 		render json: user
 	end

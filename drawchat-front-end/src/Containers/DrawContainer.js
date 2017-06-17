@@ -60,13 +60,17 @@ class DrawContainer extends React.Component {
 		this.resetState()
 
 		selectExistingDrawing(name)
-		.then(res => this.setState({
-			canvasName: res.data.name,
-			canvasUrl: res.data.canvasUrl,
-			newCanvas: false,
-			selectCanvas: true,
-			saved: true
-		}))
+		.then(res => 
+			{if (res){
+				this.setState({
+					canvasName: res.data.name,
+					canvasUrl: res.data.canvasUrl,
+					newCanvas: false,
+					selectCanvas: true,
+					saved: true
+				})
+			}else {return null}
+		})
 	}
 
 	resetState =() => {
