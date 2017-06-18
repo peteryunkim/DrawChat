@@ -13,7 +13,6 @@ class Main extends React.Component{
   }
 
   componentDidMount(){
-    // make get request for user information, send token, validate from backend, populate state with response
     getUser(localStorage.getItem('jwt'))
     .then( res => this.setState({
     	user: res.data.username,
@@ -22,7 +21,6 @@ class Main extends React.Component{
   }
 
   render(){
-  	console.log(this.state)
   	return(
 			<div className="row">
 				<div id="draw-container" className='col-md-8 col-sm-8'>	

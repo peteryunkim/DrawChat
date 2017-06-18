@@ -48,6 +48,11 @@ class DisplayCanvas extends React.Component{
   		img.src = this.props.canvasUrl
 			this.drawingOnCanvas()
 		}
+
+		if(!this.props.saved){
+			alert('Please save before you start drawing.')
+		}
+
 		this.loadCanvas()
 		this.drawingOnCanvas()
 	}	

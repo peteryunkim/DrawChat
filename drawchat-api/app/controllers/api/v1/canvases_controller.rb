@@ -7,8 +7,12 @@ class Api::V1::CanvasesController < ApplicationController
 
 	def create
 		canvas = Canvas.new(canvasUrl: params[:canvasUrl], name: params[:canvasName])
-		canvas.save
-		render json: canvas
+		if canvas.valid?
+			canvas.save
+			render json: canvas
+		else
+			render json: {error: 'Canvas name already taken...'}
+		end
 	end
 
 	def delete

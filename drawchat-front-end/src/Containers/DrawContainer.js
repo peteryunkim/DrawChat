@@ -51,9 +51,15 @@ class DrawContainer extends React.Component {
 			canvasUrl: canvasUrl
 		})
 		saveDrawingDB(canvasUrl,this.state.canvasName)
-		.then(res => this.setState(prevState => ({
-			existingCanvases: [...prevState.existingCanvases, res.data],
-		})))	
+		.then(res => {
+			if (res.data.error){
+				alert(res.data.error)
+			} else {
+				this.setState(prevState => ({
+				existingCanvases: [...prevState.existingCanvases, res.data],
+			}))}
+			}
+		)	
 	}
 
 	selectExistingCanvas = (name) => {
@@ -88,7 +94,9 @@ class DrawContainer extends React.Component {
 		if (prompt === name.name){
 			deleteCanvas(name)
 		.then( res => this.setState({
-			existingCanvases: this.state.existingCanvases.filter( list => list.name !== res.data.name)
+			existingCanvases: this.state.existingCanvases.filter( list => list.name !== res.data.name),
+			newCanvas: false,
+			selectCanvas: false
 		}))
 		} else {
 			return alert(`${name.name} not deleted!`)
@@ -98,9 +106,9 @@ class DrawContainer extends React.Component {
 	render(){
 		return(
 			<div id='canvas-container'>
-			<div id='canvas-menu' className='col-md-3'>
+			<div id='canvas-menu' className='col-md-3'>	
 				<CanvasMenu onDelete={this.handleDelete} selectCanvas={this.selectExistingCanvas}allCanvases={this.state.existingCanvases} newDrawing={this.newDrawing.bind(this)}/>
-			</div>	
+			</div>
 			<div className='col-md-9' id='container'>
 				{this.state.newCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}newCanvas={this.state.newCanvas} name={this.state.canvasName}/> : null}
 				{this.state.selectCanvas? <DisplayCanvas cableApp={this.props.cableApp}onSave={this.saveDrawing} saved={this.state.saved}canvasUrl={this.state.canvasUrl} name={this.state.canvasName}/> : null}

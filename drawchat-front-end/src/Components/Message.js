@@ -5,7 +5,7 @@ function Message(props){
 	const sender= ()=>{
 		if (props.user === props.currentUser){
 				return (<h5 id='message-sender'> 
-					<div id='you'>You</div>
+					<div id='you'>{props.currentUser} <i>(you)</i></div>
 					{props.content}
 				</h5>)
 		} else {
