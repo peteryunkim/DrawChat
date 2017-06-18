@@ -17,7 +17,7 @@ class ChatInput extends React.Component{
 	
 	handleSubmit(ev){
 		ev.preventDefault();
-		this.props.onSend(this.state.messageInput, localStorage.getItem('id'))
+		this.props.onSend(this.state.messageInput, this.props.userId)
 		this.setState({
 			messageInput: ""
 		})

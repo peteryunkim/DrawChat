@@ -47,12 +47,12 @@ class ChatBox extends React.Component{
 	}
 	
 	render(){
-	const messageList = this.state.messages.map((mes, i) => <Message key={i} user={mes.user.username}content={mes.content}/>)
+	const messageList = this.state.messages.map((mes, i) => <Message key={i} user={mes.user.username} currentUser={this.props.currentUser} content={mes.content}/>)
 		return(
 			<div>
 				<div ref='list' id='message-list'>
 					{messageList}
-				<ChatInput onSend={this.messageHandler.bind(this)}/>
+				<ChatInput userId={this.props.userId} onSend={this.messageHandler.bind(this)}/>
 				</div>
 			</div>
 		)

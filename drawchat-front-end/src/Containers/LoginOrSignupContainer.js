@@ -13,8 +13,6 @@ function LoginOrSignupContainer(props){
 					props.history.push('/login')
 				} else {
 					localStorage.setItem('jwt', res.data.token)
-					localStorage.setItem('username', res.data.user.username)
-					localStorage.setItem('id', parseInt(res.data.user.id))
 					props.history.push('/')
 				}
 			})
@@ -28,8 +26,6 @@ function LoginOrSignupContainer(props){
 					props.history.push('/login')
 				} else {
 					localStorage.setItem('jwt', res.data.token)
-					localStorage.setItem('username', res.data.user.username)
-					localStorage.setItem('id', parseInt(res.data.user.id))
 					props.history.push('/')
 				}
 			})

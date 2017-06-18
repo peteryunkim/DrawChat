@@ -3,7 +3,7 @@ import React from 'react'
 function Message(props){
 
 	const sender= ()=>{
-		if (props.user === localStorage.getItem('username')){
+		if (props.user === props.currentUser){
 				return (<h5 id='message-sender'> 
 					<div id='you'>You</div>
 					{props.content}

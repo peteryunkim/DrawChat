@@ -4,7 +4,7 @@ import ChatBox from '../Components/ChatBox'
 function ChatContainer(props){
 	return(
 		<div>
-			<ChatBox cableApp={props.cableApp}/>
+			<ChatBox userId={props.userId} currentUser={props.currentUser} cableApp={props.cableApp}/>
 		</div>
 	)
 }
