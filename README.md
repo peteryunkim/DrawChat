@@ -7,3 +7,5 @@ To run the program,
 	-start the front end by installing npm and starting the webpack
 		-npm install
 		-npm start
+
+![DrawChat](/drawchat-front-end/public/drawchat.gif)
