@@ -22,6 +22,8 @@ gem 'figaro'
 gem 'jwt'
 gem 'pry'
 gem 'active_model_serializers'
+gem 'newrelic_rpm'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
