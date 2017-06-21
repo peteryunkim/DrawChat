@@ -20,10 +20,7 @@ class DisplayCanvas extends React.Component{
 		{
 			received: canvasData => this.setState({
 				canvasUrl: canvasData.canvasUrl
-			}, () => 
-				{this.loadCanvas()
-				// this.drawingOnCanvas()
-				})
+			})
 		})
 
 		if (this.props.newCanvas === true){
