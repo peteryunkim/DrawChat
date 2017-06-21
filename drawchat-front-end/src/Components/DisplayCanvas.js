@@ -29,7 +29,6 @@ class DisplayCanvas extends React.Component{
 				canvasName: this.props.name,
 				saved: this.state.saved
 			})
-			// this.drawingOnCanvas()
 		} else if (this.props.canvasUrl.length !== 0){
 				let canvas = document.getElementById('canvas')
 				let ctx = canvas.getContext("2d")
@@ -43,7 +42,6 @@ class DisplayCanvas extends React.Component{
 	  			ctx.drawImage(img,0,0);
   		}
   		img.src = this.props.canvasUrl
-			// this.drawingOnCanvas()
 		}
 
 		if(!this.props.saved){
