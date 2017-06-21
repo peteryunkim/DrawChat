@@ -7,6 +7,7 @@ class CanvasChannel < ApplicationCable::Channel
  def receive(params)
  	canvas = Canvas.find_by(name: params['canvasName'])
 	canvas.update(canvasUrl: params['canvasUrl'])
+	puts 'CALLED'
 
 	ActionCable.server.broadcast('canvas', CanvasSerializer.new(canvas))		
 

@@ -22,7 +22,7 @@ class DisplayCanvas extends React.Component{
 				canvasUrl: canvasData.canvasUrl
 			}, () => 
 				{this.loadCanvas()
-				this.drawingOnCanvas()
+				// this.drawingOnCanvas()
 				})
 		})
 
@@ -32,7 +32,7 @@ class DisplayCanvas extends React.Component{
 				canvasName: this.props.name,
 				saved: this.state.saved
 			})
-			this.drawingOnCanvas()
+			// this.drawingOnCanvas()
 		} else if (this.props.canvasUrl.length !== 0){
 				let canvas = document.getElementById('canvas')
 				let ctx = canvas.getContext("2d")
@@ -46,7 +46,7 @@ class DisplayCanvas extends React.Component{
 	  			ctx.drawImage(img,0,0);
   		}
   		img.src = this.props.canvasUrl
-			this.drawingOnCanvas()
+			// this.drawingOnCanvas()
 		}
 
 		if(!this.props.saved){
@@ -102,6 +102,7 @@ class DisplayCanvas extends React.Component{
 	
 	handleChange = (url) => {
 		if(this.state.saved){
+			console.log('called')
 			this.props.cableApp.canvas.send({canvasUrl: url, canvasName: this.props.name})
 		} else {
 			const data = document.getElementById('canvas').toDataURL();
