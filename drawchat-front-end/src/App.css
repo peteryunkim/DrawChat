@@ -52,6 +52,9 @@ input{
 }
 
 /*    CANVAS       */
+#draw-container{
+  top: -9px;
+}
 #canvas-menu{
   background-color: #ffffff;
   border-radius: 10px;
