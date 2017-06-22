@@ -99,7 +99,6 @@ class DisplayCanvas extends React.Component{
 	
 	handleChange = (url) => {
 		if(this.state.saved){
-			console.log('called')
 			this.props.cableApp.canvas.send({canvasUrl: url, canvasName: this.props.name})
 		} else {
 			const data = document.getElementById('canvas').toDataURL();
