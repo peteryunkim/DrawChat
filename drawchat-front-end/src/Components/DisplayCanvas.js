@@ -22,7 +22,6 @@ class DisplayCanvas extends React.Component{
 				canvasUrl: canvasData.canvasUrl
 			},() => {
 				this.loadCanvas()
-			this.drawingOnCanvas()
 			})
 		})
 
