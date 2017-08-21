@@ -18,11 +18,14 @@ class DisplayCanvas extends React.Component{
 	componentDidMount(){
 		this.props.cableApp.canvas = this.props.cableApp.cable.subscriptions.create('CanvasChannel', 
 		{
-			received: canvasData => this.setState({
-				canvasUrl: canvasData.canvasUrl
-			},() => {
+			received: canvasData => 
+			{if(this.state.canvasName == canvasData.name){
+				this.setState({
+					canvasUrl: canvasData.canvasUrl
+				},() => {
 				this.loadCanvas()
-			})
+				})
+			} else {console.log('not same canvas')}}
 		})
 
 		if (this.props.newCanvas === true){
